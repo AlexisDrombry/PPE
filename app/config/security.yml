@@ -1,0 +1,48 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        in_memory:
+            memory: 
+                
+                users:
+                    user1:
+                        password: fffff
+                        roles: 'ROLE_USER'
+                        
+                    user2:
+                        password: ggggg
+                        roles: 'ROLE_ADMIN'
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false  
+       
+
+        main:
+#            anonymous: ~
+            http_basic:
+                realm: "connectez vous à un compte classic"
+                provider: in_memory
+            access_denied_url: /
+            
+            # activate different ways to authenticate
+            security: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~
+
+    access_control:
+        - { path: /page2, roles: ROLE_USER }
+        - { path: ^/, roles: ROLE_ADMIN }

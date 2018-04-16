@@ -1,0 +1,4 @@
+services:
+#    ad_gsb.example:
+#        class: AD\GsbBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

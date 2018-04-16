@@ -1,0 +1,8 @@
+ad_gsb_homepage:
+    path:     /
+    defaults: { _controller: ADGsbBundle:Default:index }
+   
+ad_gsb_testRepos:
+    path:     /
+    defaults: { _controller: ADGsbBundle:Default:testRepository }
+   
